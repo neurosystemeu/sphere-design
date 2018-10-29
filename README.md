@@ -24,3 +24,11 @@ Założenia projektowe:
 	c) assembler
 5) Dostęp do zasobów komputera i systemu przez instancję kontekstu wykonania, który jest obiektem zawierającym interfejsy do systemu plików, sieci, gui, do zarządzania pamięcią i innych.
 Celem takiego podejścia jest możliwość przełączania się między w trakcie wykonania między różnymi implementacjiamii (np. system plików przez Internet)
+
+Główne obiekty i klasy:
+- Object – zawiera wszystko to co c# i mechanizmy do serializacji (wszystko serailizujemy)
+- KontekstWykonania - zawiera wszystkie potrzebna obiekty
+	- kontekst systemowy - system plików, sieć,Gui..
+	- kontekst fizyczny - pamięć, procesy, wątki...
+	- dane wykonującego /uprawnienia itp
+	
