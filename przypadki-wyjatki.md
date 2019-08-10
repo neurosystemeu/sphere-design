@@ -14,19 +14,16 @@ public class Person
   string Name {get;set;}
   string Surname {get;set;}
   
-  string SomeMethode(string someParam)
+  string SomeMethod(string someParam)
   {
     return someParam + " text";
   }
 }
 
-public static Stack<Context> context;
-
-public void main(Context context)
+public void main()
 {
   var person = new Person();
-  println(person); //execute context.println
-  
+  println(person); 
   
   var stringWithSerialisationofObject = person.Serialize();
   var newInstanceOfPerson = Object.Deserialize(stringWithSerialisationData);
@@ -97,6 +94,53 @@ public void main()
     println(s); //newContext.println(...)
   }  
 }
+```
+
+Exceptions
+``` C#
+string someMethod(int i)
+{
+  if( i > 0)
+  {
+    return "positive";
+  } else
+  {
+    return Error(new Exception("Some descriptions"));
+    //or
+    throw new Exception("Some descriptions");
+  }
+}
+
+string anotherFunction()
+{
+  return someMethod(-1);
+}
+
+string bFunction()
+{
+  someMethod(-1); //this throw exception, in default contex this return error and exit function;
+  //if executet in fast unsafe contex, line abowe not throw exception until explicity unwrap.
+  
+  //if fast unsafe context is use, expilicty unwrap is needed to handle error
+  someMethod(-1).unwrap(); //if error return error;
+  return someMethod(1);
+}
+
+void main()
+{
+  var ret = someMethod();
+  ret.IsError() ? println("Error");//print error
+  
+  //or
+  try
+  {
+    var ret = someMethod();
+    println(ret);
+  }catch()
+  {}
+}
+
+
 ```
 
 # For version 0.1
