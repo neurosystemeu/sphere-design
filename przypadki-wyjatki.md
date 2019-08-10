@@ -141,6 +141,22 @@ void main()
   {}
 }
 
+```
+
+Compiler extension
+``` C#
+
+main()
+{
+  int i=1;
+  using(var context = new AssemblerContext()) //compile time kontext
+  {
+    mov eax, &i
+    mov ebx, 10
+    add eax, ebx
+    mov &i, eax
+  }
+}
 
 ```
 
