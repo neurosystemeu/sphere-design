@@ -1,8 +1,8 @@
-# sphere-design
+ # sphere-design
 Design assumptions for the programming language - sphere
 
-wersja 0.2
-General assumptions:
+# version 0.2
+## General assumptions:
 1. Object programming language
 2. Inspired by C, C#,  Java, Rust
 3. Flexible syntax depending on the context:
@@ -10,13 +10,16 @@ General assumptions:
 	* GC can by disabled in some context and manual memory management can by used.
 4. Depend on JIT/VM.
 5. Source/binary are in AST
+6. Handling simple reflections
+7. Generic types
+8. CVC - Code View Controller
+
+## Project assumptions:
+1. Multiple inheritance allowed
 
 
-
-
+# wersja 0.1
 Założenia projektowe do języka programowania sphere
-wersja 0.1
-
 
 Założenia ogólne:
 1. Obiektowy język programowania
