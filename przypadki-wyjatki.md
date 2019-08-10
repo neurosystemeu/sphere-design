@@ -84,7 +84,7 @@ public void main()
   //create new context, and push on context stack
   using(var newContext = new ContextWithManualMemoryManagement ()) //use static context used in compile time
   {
-    var person = new Person(); //execute newContext.new - return uniqe<Person>
+    var person = new Person(); //execute newContext.new - return Person*
     var s = someFunction(person); //move responsibility of object to function
     
     print(person); //Compile error - person lost 
@@ -108,6 +108,7 @@ string someMethod(int i)
     return Error(new Exception("Some descriptions"));
     //or
     throw new Exception("Some descriptions");
+    //two above method are interpreted the same
   }
 }
 
