@@ -1,6 +1,6 @@
 # For version 0.2
 Hello world example
-```
+``` C#
 public void main()
 {
   println("Hello world");
@@ -40,7 +40,7 @@ public void main(Context context)
 ```
 
 Execution context
-```
+``` C#
 //simple dynamic context without gc
 public void main()
 {
@@ -112,7 +112,7 @@ oraz wykonanie "wyjątku" np. po 5 błędnych próbach.
 ## Powtarzanie wykonania kodu
 Przykładowy kod z uwagami
 
-```
+``` C#
 //C#
 var czujnik = new Termometr();
 int iloscBledow=5;
@@ -143,7 +143,7 @@ a jeśli to nie pomoże to zakładamy że czujnik nie działa i zgłaszamy awari
 słowem gdzieś wyżej będzie podobna pętla..
 
 a może wystarczyło by
-```
+``` C#
   var temperatura = wykonajNRazy(czujnik.PobierzTemperature(),5, new Exceptions("Czujnik ma poważny problem i nie działa po 5 próbach")); 
 ```
 
