@@ -16,6 +16,12 @@ Design assumptions for the programming language - sphere
 
 ## Project assumptions:
 1. Multiple inheritance allowed
+2. Type is:
+	* unique name
+	* size of type
+	* list of properties
+	* list of method
+	* generic parameters list
 
 
 # wersja 0.1
