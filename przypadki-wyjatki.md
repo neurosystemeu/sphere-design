@@ -1,3 +1,5 @@
+For version 0.1
+
 # Przypadki użycia - wyjątków i ich obsługa
 
 Wyjątki nie są takie wyjątkowe :), zwłaszcza w świecie mikrokontrolerów, gdzie w warunkach dużych zakłuceń odczytanie np. temperatury z czujnika często kończy się błędem.
