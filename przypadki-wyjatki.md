@@ -1,6 +1,107 @@
-For version 0.1
+# For version 0.2
+Hello world example
+```
+public void main()
+{
+  println("Hello world");
+}
+```
 
-# Przypadki użycia - wyjątków i ich obsługa
+Serialization - object and code
+``` C#
+public class Person
+{
+  string Name {get;set;}
+  string Surname {get;set;}
+  
+  string SomeMethode(string someParam)
+  {
+    return someParam + " text";
+  }
+}
+
+public static Stack<Context> context;
+
+public void main(Context context)
+{
+  var person = new Person();
+  println(person); //execute context.println
+  
+  
+  var stringWithSerialisationofObject = person.Serialize();
+  var newInstanceOfPerson = Object.Deserialize(stringWithSerialisationData);
+  
+  var stringWithSerialisationOfType = Type.Serialize(typeof(Person));
+  var newType = Type.Deserialize(stringWithSerialisationOfType);
+  var newTypeInstance = Type.Create<Interface/type>(newType, typ); 
+  dynamic d = newTypeInstance;
+  d.SomeMethode("sdf"); 
+}
+```
+
+Execution context
+```
+//simple dynamic context without gc
+public void main()
+{
+  println("some text"); //execute context.println
+  
+  //create new context, and push on context stack
+  using(var newContext = new WithoutGCContext()) //use dynamic contex
+  {
+    //here all code execute on newContext
+    println("Helo from new context"); //newContext.println(...)
+    someFunction(); //use newContext
+    
+    var person = new Person(); //execute newContext.new
+  }  
+}
+
+//static contex with memory owner - use in compile time
+public void main()
+{
+  println("some text"); //execute context.println
+  
+  //create new context, and push on context stack
+  using(var newContext = new ContextWithMemoryOwner()) //use static context used in compile time
+  {
+    var person = new Person(); //execute newContext.new - return uniqe<Person>
+    var s = someFunction(person); //move responsibility of object to function
+    
+    print(person); //Compile error - person lost ovner
+    print(s); //ok
+    
+    someFunction(person.Copy());//person now is share and both main and somefunction responsibility for it
+    
+    //here all code execute on newContext
+    println(s); //newContext.println(...)     
+    
+  }  
+}
+
+//static context with manula memory management - compile time
+public void main()
+{
+  println("some text"); //execute context.println
+  
+  //create new context, and push on context stack
+  using(var newContext = new ContextWithManualMemoryManagement ()) //use static context used in compile time
+  {
+    var person = new Person(); //execute newContext.new - return uniqe<Person>
+    var s = someFunction(person); //move responsibility of object to function
+    
+    print(person); //Compile error - person lost 
+    print(s); //ok
+    
+    //here all code execute on newContext
+    println(s); //newContext.println(...)
+  }  
+}
+```
+
+# For version 0.1
+
+## Przypadki użycia - wyjątków i ich obsługa
 
 Wyjątki nie są takie wyjątkowe :), zwłaszcza w świecie mikrokontrolerów, gdzie w warunkach dużych zakłuceń odczytanie np. temperatury z czujnika często kończy się błędem.
 Jednym słowem, wyjątków w rozumieniu C# jest znacznie więcej niż to się wydaję - patrząc na strukturę kodu.
